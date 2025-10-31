@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HIV Champion — 30‑Minute Clinic Training (One-Page)</title>
+<style>
+  :root{--ink:#0f172a;--muted:#334155;--brand:#0f766e;--bg:#f8fafc;--ok:#16a34a;--err:#dc2626;--card:#ffffff;}
+  *{box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);margin:0;line-height:1.6}
+  header,footer{background:#0f172a;color:#fff}
+  .wrap{max-width:980px;margin:0 auto;padding:20px}
+  h1,h2,h3{line-height:1.25}
+  h1{margin:0 0 8px}
+  .pill{display:inline-block;background:var(--brand);color:#fff;padding:4px 10px;border-radius:999px;font-size:.9rem}
+  .card{background:var(--card);border:1px solid #e5e7eb;border-radius:14px;padding:18px;margin:16px 0}
+  a{color:var(--brand);text-decoration:none}
+  .btn{display:inline-block;padding:10px 14px;border-radius:8px;border:1px solid var(--brand);background:var(--brand);color:#fff;cursor:pointer}
+  .btn.secondary{background:#fff;color:var(--brand)}
+  .grid{display:grid;gap:16px}
+  @media(min-width:820px){.grid.two{grid-template-columns:1fr 1fr}}
+  details{background:#f1f5f9;padding:10px;border-radius:8px}
+  summary{cursor:pointer;font-weight:600}
+  /* Quiz */
+  .quiz .q{padding:12px;border-radius:10px;background:#f8fafc;margin:12px 0;border:1px solid #e5e7eb}
+  .quiz .q.correct{border-left:5px solid var(--ok);background:#f0fdf4}
+  .quiz .q.incorrect{border-left:5px solid var(--err);background:#fef2f2}
+  .quiz .result{font-weight:700;margin-top:8px}
+  .alert{background:#eef2ff;padding:10px;border-radius:8px}
+  .muted{color:var(--muted);font-size:.95rem}
+  .license{font-size:.9rem;opacity:.85}
+  /* Certificate Modal */
+  .modal{position:fixed;inset:0;background:rgba(15,23,42,.6);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.is-open{display:flex}
+  .modal .paper{background:#fff;width:min(800px,95vw);padding:28px;border-radius:12px}
+  .paper h2{text-align:center;margin:0 0 4px}
+  .paper h3{text-align:center;margin:0 0 18px;font-weight:400}
+  .cert-body{border:6px double #000;padding:28px}
+  .cert-meta{margin-top:18px}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  input[type="text"]{padding:10px;border:1px solid #cbd5e1;border-radius:8px;width:280px}
+  .center{text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <span class="pill">Clinic HIV Champion</span>
+    <h1>30‑Minute Foundational Training (One‑Page)</h1>
+    <p class="muted">For nurses, MAs, CHWs, case managers, peers, and clinic staff who want to serve as HIV Champions.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2>How to Use</h2>
+    <ol>
+      <li>Take the <strong>Pre‑Learning Quiz</strong> (no studying first).</li>
+      <li>Read the <strong>Core Lesson</strong> (10–15 minutes).</li>
+      <li>Take the <strong>Post‑Learning Quiz</strong> (with rationales).</li>
+      <li>Enter your name and <strong>Generate Certificate</strong> (lists modules completed).</li>
+    </ol>
+    <p class="muted">Evidence base: Rajabiun 2021; IDSA 2020/2024; OARAC 2024; Han 2018; Davoust 2021; Hammack 2021; Ayala 2021; Franke 2013; Freibott 2022.</p>
+  </section>
+
+  <section class="card">
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Explain <strong>U=U</strong> and ART adherence.</li>
+      <li>Identify barriers/strategies for <strong>linkage, retention, re‑engagement</strong>.</li>
+      <li>Use <strong>nonjudgmental, trauma‑informed communication</strong>.</li>
+      <li>Navigate/support <strong>PrEP/PEP</strong>, harm reduction, and social services.</li>
+      <li>Model <strong>teamwork</strong> as a clinic HIV Champion.</li>
+    </ul>
+  </section>
+
+  <!-- PRE QUIZ -->
+  <section class="card" id="pre">
+    <h2>Pre‑Learning Quiz</h2>
+    <div class="quiz" data-quiz-id="pre">
+      <div class="q">
+        <p><strong>1)</strong> What does “U=U” mean?</p>
+        <label><input type="radio" name="pre_q1"> ART cures HIV</label><br>
+        <label><input type="radio" name="pre_q1" data-answer> People with undetectable viral load do not sexually transmit HIV</label><br>
+        <label><input type="radio" name="pre_q1"> CD4 becomes undetectable</label><br>
+        <label><input type="radio" name="pre_q1"> Condoms are unnecessary</label>
+      </div>
+      <div class="q">
+        <p><strong>2)</strong> A client missed ART for 2 weeks due to eviction. First step?</p>
+        <label><input type="radio" name="pre_q2"> Warn about resistance</label><br>
+        <label><input type="radio" name="pre_q2" data-answer> Assess barriers (housing/transport) and re‑link to care</label><br>
+        <label><input type="radio" name="pre_q2"> Discharge the client</label><br>
+        <label><input type="radio" name="pre_q2"> Switch regimen yourself</label>
+      </div>
+      <div class="q">
+        <p><strong>3)</strong> Best way to reduce stigma in conversation?</p>
+        <label><input type="radio" name="pre_q3"> Avoid discussing HIV</label><br>
+        <label><input type="radio" name="pre_q3" data-answer> Use people‑first language; ask permission; reflect concerns</label><br>
+        <label><input type="radio" name="pre_q3"> Lecture about adherence</label><br>
+        <label><input type="radio" name="pre_q3"> Share other patients’ stories</label>
+      </div>
+      <div class="q">
+        <p><strong>4)</strong> Which is true about PrEP/PEP?</p>
+        <label><input type="radio" name="pre_q4" data-answer> PrEP prevents before exposure; PEP is 28 days ≤72h after exposure</label><br>
+        <label><input type="radio" name="pre_q4"> Both are vaccines</label><br>
+        <label><input type="radio" name="pre_q4"> Both treat established HIV</label><br>
+        <label><input type="radio" name="pre_q4"> PrEP is only for one population</label>
+      </div>
+      <div class="q">
+        <p><strong>5)</strong> Same‑day linkage should include:</p>
+        <label><input type="radio" name="pre_q5"> Wait for labs before scheduling care</label><br>
+        <label><input type="radio" name="pre_q5" data-answer> Warm handoff, transport plan, next appointment date/time</label><br>
+        <label><input type="radio" name="pre_q5"> Mail a brochure</label><br>
+        <label><input type="radio" name="pre_q5"> Call next month</label>
+      </div>
+      <button class="btn grade">Check Answers</button>
+      <div class="result"></div>
+    </div>
+  </section>
+
+  <!-- LESSON -->
+  <section class="card" id="lesson">
+    <h2>Core Lesson (10–15 minutes)</h2>
+    <div class="grid two">
+      <div>
+        <h3>1) What Is an HIV Champion?</h3>
+        <p>An <strong>HIV Champion</strong> is any clinic team member who promotes patient‑centered HIV care and coordinates linkage, education, and stigma reduction.</p>
+        <ul>
+          <li><strong>Nurses/MAs:</strong> reinforce adherence, education during vitals</li>
+          <li><strong>Case/Social Workers:</strong> resources and follow‑up</li>
+          <li><strong>CHWs/Peers:</strong> bridge clinic and community</li>
+          <li><strong>Front‑Desk/Admin:</strong> privacy and respectful interactions</li>
+        </ul>
+      </div>
+      <div>
+        <h3>2) HIV Basics</h3>
+        <ul>
+          <li>HIV targets <strong>CD4 T‑cells</strong>; <strong>ART</strong> suppresses virus</li>
+          <li><strong>Viral load</strong> drives transmission risk; <strong>U=U</strong> for sexual transmission when undetectable</li>
+          <li>Consistent ART + follow‑up → healthy life expectancy</li>
+        </ul>
+      </div>
+      <div>
+        <h3>3) Linkage, Retention & Re‑Engagement</h3>
+        <ul>
+          <li><strong>Same‑day connect</strong> after diagnosis or missed visit</li>
+          <li>Address SDOH: housing, food, transport, stigma</li>
+          <li>Supports: bus cards, reminders (opt‑in), flexible scheduling, peer groups</li>
+          <li>Re‑engage with empathy, not blame</li>
+        </ul>
+      </div>
+      <div>
+        <h3>4) Communication & Cultural Competence</h3>
+        <ul>
+          <li>Use <strong>people‑first</strong> language and ask permission</li>
+          <li>Mindful of identities: LGBTQ+, youth, immigrants, PWID</li>
+          <li>Active listening & reflective statements build trust</li>
+        </ul>
+      </div>
+      <div>
+        <h3>5) Prevention & Harm Reduction</h3>
+        <ul>
+          <li><strong>PrEP</strong>: ongoing prevention for HIV‑negative persons at risk</li>
+          <li><strong>PEP</strong>: 28‑day medication ≤72h after exposure; clinic follow‑up</li>
+          <li>Condoms, STI testing, clean syringes (if legal), substance‑use referrals</li>
+        </ul>
+      </div>
+      <div>
+        <h3>6) Teamwork, Documentation & Self‑Care</h3>
+        <ul>
+          <li>Document facts, not judgments; protect confidentiality</li>
+          <li>Coordinate across nursing, social work, pharmacy, community partners</li>
+          <li>Use supervision, peer support, micro‑breaks</li>
+        </ul>
+      </div>
+    </div>
+    <details>
+      <summary>Scripts, Checklists & Red Flags (optional)</summary>
+      <p><strong>U=U Script:</strong> “When labs show <em>undetectable</em>, sex won’t transmit HIV. Staying on meds and coming to visits keeps you undetectable. If anything gets in the way—housing, rides, side effects—tell us and we’ll problem‑solve together.”</p>
+      <p><strong>Re‑engagement Call (4 steps):</strong> Warm start → Normalize → Offer options → Book now.</p>
+      <p><strong>Linkage Checklist:</strong> next appt set, transport plan, refill/delivery, reminder preference, referrals started, follow‑up date set.</p>
+      <p><strong>Red Flags → urgent clinician alert:</strong> fever, chest pain, severe headache/confusion, SOB, dehydration, suicidality, overdose risk, violence risk, pregnancy + acute concerns, or recent high‑risk exposure needing PEP.</p>
+    </details>
+    <p class="muted">Evidence: IDSA 2020/2024; OARAC 2024; Rajabiun 2021; Han 2018; Davoust 2021; Hammack 2021; Ayala 2021; Franke 2013; Freibott 2022.</p>
+  </section>
+
+  <!-- POST QUIZ -->
+  <section class="card" id="post">
+    <h2>Post‑Learning Quiz</h2>
+    <div class="alert muted">Rationales appear after grading.</div>
+    <div class="quiz" data-quiz-id="post">
+      <div class="q" data-rationale="U=U is evidence‑based for sexual transmission; continue ART & monitoring; offer condoms for STI prevention.">
+        <p><strong>1)</strong> Client with undetectable viral load asks about risk of sexual transmission. Best response?</p>
+        <label><input type="radio" name="post_q1"> Use condoms 100% of the time because risk is unchanged</label><br>
+        <label><input type="radio" name="post_q1" data-answer> Explain U=U clearly and reinforce adherence and monitoring</label><br>
+        <label><input type="radio" name="post_q1"> Stop ART since risk is low</label><br>
+        <label><input type="radio" name="post_q1"> Only PrEP makes sex safe</label>
+      </div>
+      <div class="q" data-rationale="Concrete navigation steps with same‑day linkage drive retention.">
+        <p><strong>2)</strong> Which action most directly supports retention?</p>
+        <label><input type="radio" name="post_q2"> Mailing brochures</label><br>
+        <label><input type="radio" name="post_q2" data-answer> Warm handoff, transport plan, scheduled follow‑up, reminders</label><br>
+        <label><input type="radio" name="post_q2"> Waiting for client to call</label><br>
+        <label><input type="radio" name="post_q2"> Reviewing ART science for 30 minutes</label>
+      </div>
+      <div class="q" data-rationale="Safety first; client‑led choices; connect to services; avoid escalation.">
+        <p><strong>3)</strong> Client discloses intimate partner violence. Next step?</p>
+        <label><input type="radio" name="post_q3"> Tell them to leave immediately</label><br>
+        <label><input type="radio" name="post_q3" data-answer> Ensure safety; offer IPV resources; warm referral; sensitive documentation</label><br>
+        <label><input type="radio" name="post_q3"> Confront partner yourself</label><br>
+        <label><input type="radio" name="post_q3"> Ignore unless injuries</label>
+      </div>
+      <div class="q" data-rationale="PEP is time‑sensitive; PrEP is ongoing prevention for those at risk.">
+        <p><strong>4)</strong> Accurate statement about PrEP/PEP?</p>
+        <label><input type="radio" name="post_q4"> Both treat HIV infection</label><br>
+        <label><input type="radio" name="post_q4" data-answer> PEP = 28 days ≤72h after exposure; PrEP = ongoing prevention</label><br>
+        <label><input type="radio" name="post_q4"> PrEP is only for one population</label><br>
+        <label><input type="radio" name="post_q4"> PEP starts after 2 weeks</label>
+      </div>
+      <div class="q" data-rationale="Neutral, solution‑oriented documentation supports care coordination.">
+        <p><strong>5)</strong> Best documentation note?</p>
+        <label><input type="radio" name="post_q5"> “Patient careless about meds.”</label><br>
+        <label><input type="radio" name="post_q5" data-answer> “Client reports transport barriers; bus card provided; follow‑up set.”</label><br>
+        <label><input type="radio" name="post_q5"> “Noncompliant client.”</label><br>
+        <label><input type="radio" name="post_q5"> “Patient failed adherence.”</label>
+      </div>
+      <div class="q" data-rationale="Acute red flags and time‑sensitive PEP needs require immediate clinical attention.">
+        <p><strong>6)</strong> When should a Champion escalate urgently?</p>
+        <label><input type="radio" name="post_q6"> Missed one dose last week</label><br>
+        <label><input type="radio" name="post_q6" data-answer> Severe headache + fever + confusion, or recent high‑risk exposure needing PEP</label><br>
+        <label><input type="radio" name="post_q6"> Requests bus card</label><br>
+        <label><input type="radio" name="post_q6"> Needs new phone number</label>
+      </div>
+      <button class="btn grade">Grade Post‑Quiz</button>
+      <div class="result"></div>
+      <div class="muted">Passing score required for certificate: <strong>4 / 6</strong> (≈67%).</div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATE -->
+  <section class="card" id="cert">
+    <h2>Certificate of Completion</h2>
+    <p>To unlock the certificate, please complete and grade the <strong>Post‑Learning Quiz</strong> (score ≥ 4/6).</p>
+    <div class="row">
+      <label for="cert_name"><strong>Your name:</strong></label>
+      <input type="text" id="cert_name" placeholder="Type your name">
+      <button class="btn" id="make_cert">Generate Certificate</button>
+      <button class="btn secondary" id="print_cert" disabled>Print/Download</button>
+    </div>
+    <p class="muted">The certificate will include: HIV Basics & U=U; Linkage & Retention; Communication & Cultural Competence; Prevention (PrEP/PEP) & Harm Reduction; Teamwork, Documentation & Self‑Care.</p>
+  </section>
+
+  <section class="card license">
+    <strong>References (Evidence Base):</strong> Rajabiun 2021; Thompson 2021 (IDSA); Horberg 2024 (IDSA); OARAC ARV Guidelines 2024; Han 2018; Davoust 2021; Hammack 2021; Ayala 2021; Franke 2013; Freibott 2022. <br>
+    <strong>License:</strong> CC BY 4.0 — reuse and adapt freely with attribution.
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© <span id="y"></span> HIV Champion One‑Page Training • CC BY 4.0</p>
+  </div>
+</footer>
+
+<!-- Modal Certificate -->
+<div class="modal" id="cert_modal" aria-hidden="true" role="dialog" aria-label="Certificate Preview">
+  <div class="paper">
+    <div class="cert-body" id="cert_paper">
+      <h2>Certificate of Completion</h2>
+      <h3>Clinic HIV Champion — 30‑Minute Training</h3>
+      <p>This certifies that <strong><span id="c_name">[Your Name]</span></strong> has completed the training and demonstrated competency on the post‑assessment.</p>
+      <div class="cert-meta">
+        <p><strong>Date:</strong> <span id="c_date"></span></p>
+        <p><strong>Modules Completed:</strong></p>
+        <ul>
+          <li>HIV Basics & U=U</li>
+          <li>Linkage, Retention & Re‑Engagement</li>
+          <li>Communication & Cultural Competence</li>
+          <li>Prevention (PrEP/PEP) & Harm Reduction</li>
+          <li>Teamwork, Documentation & Self‑Care</li>
+        </ul>
+      </div>
+      <p style="margin-top:22px">Signature: _______________________________</p>
+    </div>
+    <div class="center" style="margin-top:18px">
+      <button class="btn" id="close_modal">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Footer year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Quiz grading engine (single/multi)
+  function gradeQuiz(quizEl){
+    let total=0, correct=0;
+    const qs = quizEl.querySelectorAll('.q');
+    qs.forEach(q=>{
+      total++;
+      const inputs = q.querySelectorAll('input[type="radio"],input[type="checkbox"]');
+      let ok=true, answered=false;
+      inputs.forEach(inp=>{
+        const isAns = inp.hasAttribute('data-answer');
+        if(inp.type==='checkbox'){
+          if(inp.checked !== isAns) ok=false;
+          if(inp.checked) answered=true;
+        }else{
+          if(inp.checked){ answered=true; if(!isAns) ok=false; }
+          // ensure the actual answer was selected in single-select
+          if(isAns && !Array.from(inputs).some(i=>i.checked && i.hasAttribute('data-answer'))) ok=false;
+        }
+      });
+      if(!answered) ok=false;
+      q.classList.remove('correct','incorrect');
+      q.classList.add(ok ? 'correct' : 'incorrect');
+
+      // Show rationale if provided and graded incorrect
+      const rationale = q.getAttribute('data-rationale');
+      if(rationale){
+        let det = q.querySelector('details');
+        if(!det){
+          det = document.createElement('details');
+          const sum = document.createElement('summary');
+          sum.textContent = 'Rationale';
+          const p = document.createElement('p');
+          p.textContent = rationale;
+          det.appendChild(sum); det.appendChild(p);
+          q.appendChild(det);
+        }
+        det.open = !ok; // auto-open rationale if incorrect
+      }
+
+      if(ok) correct++;
+    });
+    const res = quizEl.querySelector('.result');
+    if(res) res.textContent = `Score: ${correct} / ${total}`;
+    return {correct, total};
+  }
+
+  document.addEventListener('click', (e)=>{
+    if(e.target.classList.contains('grade')){
+      const quiz = e.target.closest('.quiz');
+      const {correct,total} = gradeQuiz(quiz);
+      // Mark completion state
+      quiz.dataset.scored = `${correct}/${total}`;
+    }
+  });
+
+  // Certificate logic
+  const makeBtn = document.getElementById('make_cert');
+  const printBtn = document.getElementById('print_cert');
+  const nameInput = document.getElementById('cert_name');
+  const modal = document.getElementById('cert_modal');
+  const cName = document.getElementById('c_name');
+  const cDate = document.getElementById('c_date');
+  const closeModal = document.getElementById('close_modal');
+
+  function getPostScoreOK(){
+    const post = document.querySelector('[data-quiz-id="post"]');
+    if(!post || !post.dataset.scored) return false;
+    const parts = post.dataset.scored.split('/');
+    const c = parseInt(parts[0],10), t = parseInt(parts[1],10);
+    return t>0 && c >= 4; // passing threshold 4/6
+  }
+
+  makeBtn.addEventListener('click', ()=>{
+    const nm = nameInput.value.trim();
+    if(!nm){ alert('Please enter your name.'); return; }
+    if(!getPostScoreOK()){ alert('Please complete and pass the Post‑Learning Quiz (≥ 4 / 6) before generating your certificate.'); return; }
+    cName.textContent = nm;
+    cDate.textContent = new Date().toLocaleDateString();
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    printBtn.disabled = false;
+  });
+
+  closeModal.addEventListener('click', ()=>{
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+  });
+
+  // Print/download handler: open a print-friendly window with the certificate content
+  printBtn.addEventListener('click', ()=>{
+    const certHTML = document.getElementById('cert_paper').outerHTML;
+    const w = window.open('', '_blank');
+    w.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>Certificate</title>
+    <style>
+      body{font-family:Georgia,serif;margin:40px}
+      .cert-body{border:6px double #000;padding:28px}
+      h2{text-align:center;margin:0 0 4px}
+      h3{text-align:center;margin:0 0 18px;font-weight:400}
+    </style></head><body>${certHTML}<script>window.onload=()=>window.print()</script></body></html>`);
+    w.document.close();
+  });
+</script>
+</body>
+</html>
