@@ -291,21 +291,96 @@
 <script>
 try {
 document.addEventListener('DOMContentLoaded', function(){
-
-  
+  // Footer year
+  var yEl = document.getElementById('y'); if (yEl) yEl.textContent = new Date().getFullYear();
   // JS status badge
-  document.getElementById('js-status').textContent = 'JavaScript is ON — quizzes and certificate are active.';
+  var jsStatus = document.getElementById('js-status'); if (jsStatus) jsStatus.textContent = 'JavaScript is ON — quizzes and certificate are active.';
 
+  // Correct, simple grading logic
+  function gradeQuiz(quizEl){
+    var total = 0, correct = 0;
+    var qs = quizEl.querySelectorAll('.q');
+    qs.forEach(function(q){
+      total++;
+      var inputs = q.querySelectorAll('input[type="radio"],input[type="checkbox"]');
+      var isMulti = Array.from(inputs).some(function(i){ return i.type === 'checkbox'; });
+      var ok = true;
+      var answered = false;
+
+      if (!isMulti){
+        // Single-select
+        var selected = Array.from(inputs).find(function(i){ return i.checked; });
+        answered = !!selected;
+        ok = !!(selected && selected.hasAttribute('data-answer'));
+      } else {
+        // Multi-select: all answers must match exactly
+        var anyChecked = false;
+        inputs.forEach(function(inp){
+          var isAns = inp.hasAttribute('data-answer');
+          if (inp.checked) anyChecked = true;
+          if (inp.checked !== isAns) ok = false;
+        });
+        answered = anyChecked; // require at least one choice
+      }
+
+      q.classList.remove('correct','incorrect');
+      q.classList.add(ok ? 'correct' : 'incorrect');
+
+      // Rationale handling
+      var rationale = q.getAttribute('data-rationale');
+      if (rationale){
+        var det = q.querySelector('details');
+        if (!det){
+          det = document.createElement('details');
+          var sum = document.createElement('summary'); sum.textContent = 'Rationale';
+          var p = document.createElement('p'); p.textContent = rationale;
+          det.appendChild(sum); det.appendChild(p);
+          q.appendChild(det);
+        }
+        det.open = !ok; // auto-open when incorrect
+      }
+
+      if (ok) correct += 1;
+    });
+    var res = quizEl.querySelector('.result');
+    if (res) res.textContent = 'Score: ' + correct + ' / ' + total;
+    return {correct: correct, total: total};
+  }
+
+  // Attach handlers (delegated + explicit fallback)
   function gradeFromButton(btn){
-    const quiz = btn.closest('.quiz');
-    const res = gradeQuiz(quiz);
-    quiz.dataset.scored = `${res.correct}/${res.total}`;
+    var quiz = btn.closest('.quiz');
+    var result = gradeQuiz(quiz);
+    quiz.dataset.scored = result.correct + '/' + result.total;
+  }
+
+  document.addEventListener('click', function(e){
+    if (e.target && e.target.classList.contains('grade')){
+      gradeFromButton(e.target);
+    }
+  });
+
+  // Certificate logic
+  var makeBtn = document.getElementById('make_cert');
+  var printBtn = document.getElementById('print_cert');
+  var nameInput = document.getElementById('cert_name');
+  var modal = document.getElementById('cert_modal');
+  var cName = document.getElementById('c_name');
+  var cDate = document.getElementById('c_date');
+  var closeModal = document.getElementById('close_modal');
+
+  function getPostScoreOK(){
+    var post = document.querySelector('[data-quiz-id="post"]');
+    if (!post || !post.dataset.scored) return false;
+    var parts = post.dataset.scored.split('/');
+    var c = parseInt(parts[0],10), t = parseInt(parts[1],10);
+    return (t > 0) && (c >= 4);
   }
 
   function makeCert(){
-    const nm = nameInput.value.trim();
-    if(!nm){ alert('Please enter your name.'); return; }
-    if(!getPostScoreOK()){ alert('Please complete and pass the Post-Learning Quiz (≥ 4 / 6) before generating your certificate.'); return; }
+    var nm = (nameInput && nameInput.value || '').trim();
+    if (!nm){ alert('Please enter your name.'); return; }
+    if (!getPostScoreOK()){ alert('Please complete and pass the Post-Learning Quiz (≥ 4 / 6) before generating your certificate.'); return; }
     cName.textContent = nm;
     cDate.textContent = new Date().toLocaleDateString();
     modal.classList.add('is-open');
@@ -314,16 +389,31 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function printCert(){
-    if(printBtn.disabled) return;
-    const certHTML = document.getElementById('cert_paper').outerHTML;
-    const w = window.open('', '_blank');
-    w.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>Certificate</title>
-    <style>
-      body{font-family:Georgia,serif;margin:40px}
-      .cert-body{border:6px double #000;padding:28px}
-      h2{text-align:center;margin:0 0 4px}
-      h3{text-align:center;margin:0 0 18px;font-weight:400}
-    </style></head><body>${certHTML}<script>window.onload=()=>window.print()
+    if (printBtn.disabled) return;
+    // Create a print-friendly document without using </script> in strings
+    var w = window.open('', '_blank');
+    var doc = w.document;
+    doc.open();
+    doc.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>Certificate</title>');
+    doc.write('<style>body{font-family:Georgia,serif;margin:40px}.cert-body{border:6px double #000;padding:28px}h2{text-align:center;margin:0 0 4px}h3{text-align:center;margin:0 0 18px;font-weight:400}</style>');
+    doc.write('</head><body>');
+    doc.write(document.getElementById('cert_paper').outerHTML);
+    doc.write('</body></html>');
+    doc.close();
+    w.onload = function(){ w.print(); };
+  }
+
+  if (makeBtn) makeBtn.addEventListener('click', makeCert);
+  if (printBtn) printBtn.addEventListener('click', printCert);
+  if (closeModal) closeModal.addEventListener('click', function(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+  });
+
+  // Expose fallbacks globally
+  window.gradeFromButton = gradeFromButton;
+  window.makeCert = makeCert;
+  window.printCert = printCert;
 });
 } catch(e) {
   console.error('Script error:', e);
